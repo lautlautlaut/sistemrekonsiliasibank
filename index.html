@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - SIA Rekonsiliasi Bank</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏦 SIA Rekonsiliasi Bank</h1>
+    <nav>
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="import.html">Import</a>
+      <a href="workspace.html">Rekonsiliasi</a>
+      <a href="laporan.html">Laporan</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <label>Pilih Rekening:</label>
+      <select id="sel-account"></select>
+    </div>
+
+    <div class="grid-3">
+      <div class="card stat">
+        <h3>Saldo Buku Besar</h3>
+        <p id="saldo-buku" class="big">Rp 0</p>
+      </div>
+      <div class="card stat">
+        <h3>Saldo Rekening Bank</h3>
+        <p id="saldo-bank" class="big">Rp 0</p>
+      </div>
+      <div class="card stat warn">
+        <h3>Selisih</h3>
+        <p id="selisih" class="big">Rp 0</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Outstanding (Hanya di Perusahaan)</h3>
+        <p><strong id="count-outstanding">0</strong> transaksi</p>
+      </div>
+      <div class="card">
+        <h3>Belum Dibukukan (Hanya di Bank)</h3>
+        <p><strong id="count-belum">0</strong> transaksi</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

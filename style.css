@@ -1,0 +1,208 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+header {
+  background: #0f172a;
+  color: #fff;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+}
+header h1 { font-size: 1.2rem; margin-bottom: 10px; }
+header nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-right: 16px;
+  font-size: .9rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+header nav a.active,
+header nav a:hover { background: #1e293b; color: #fff; }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  display: grid;
+  gap: 16px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+@media (max-width: 720px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+.card h2, .card h3 { font-size: 1rem; margin-bottom: 12px; color: #0f172a; }
+
+.card-head {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 12px;
+}
+
+.stat .big { font-size: 1.4rem; font-weight: 700; color: #1d4ed8; }
+.stat.warn .big { color: #dc2626; }
+
+label { font-size: .85rem; color: #475569; margin-right: 6px; }
+input, select, button {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: .88rem;
+  margin: 4px 0;
+}
+input, select { width: 100%; }
+button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 9px 16px;
+}
+button:hover { background: #1d4ed8; }
+button.secondary { background: #64748b; }
+button.secondary:hover { background: #475569; }
+button.warn { background: #ea580c; }
+button.warn:hover { background: #c2410c; }
+button.danger { background: #dc2626; }
+button.danger:hover { background: #b91c1c; }
+button.small { padding: 6px 10px; font-size: .8rem; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.toolbar button { width: auto; }
+.toolbar select { width: auto; min-width: 180px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+th, td {
+  padding: 7px 9px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f1f5f9; font-weight: 600; }
+tr.matched td { background: #dcfce7; color: #166534; }
+
+.hint {
+  font-size: .8rem;
+  color: #64748b;
+  margin: 8px 0;
+  padding: 8px;
+  background: #f8fafc;
+  border-left: 3px solid #2563eb;
+  border-radius: 4px;
+}
+.log {
+  font-family: monospace;
+  font-size: .8rem;
+  background: #0f172a;
+  color: #22d3ee;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  min-height: 20px;
+  white-space: pre-wrap;
+}
+
+/* ============ MODAL ============ */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+}
+.modal.hidden { display: none; }
+.modal-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90vw;
+  display: grid;
+  gap: 8px;
+}
+.modal-box h3 { margin-bottom: 4px; }
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+/* Modal khusus Undo */
+#modal-undo .modal-box { max-width: 440px; }
+#modal-undo h3 { color: #991b1b; margin-bottom: 10px; }
+#modal-undo p { font-size: .88rem; color: #475569; margin-bottom: 8px; line-height: 1.45; }
+#modal-undo label {
+  display: block;
+  font-size: .82rem;
+  color: #475569;
+  margin-top: 6px;
+}
+#modal-undo input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: .88rem;
+}
+
+/* Badge metode */
+.badge-metode {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+.badge-metode.auto   { background: #ddd6fe; color: #5b21b6; }
+.badge-metode.manual { background: #fef9c3; color: #854d0e; }
+
+/* Tombol undo di tabel riwayat */
+.btn-undo {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: .78rem;
+  font-weight: 600;
+}
+.btn-undo.danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.btn-undo.danger:hover { background: #fecaca; }
+.btn-undo:disabled { opacity: .5; cursor: not-allowed; }
+
+/* Laporan */
+.tbl-laporan { margin: 12px 0; }
+.tbl-laporan th { width: 40%; text-align: left; }
+.tbl-laporan .total th,
+.tbl-laporan .total td { font-weight: 700; background: #fef9c3; }
+
+@media print {
+  header, .toolbar { display: none; }
+  body { background: #fff; }
+  .card { box-shadow: none; }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Laporan Rekonsiliasi Bank</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏦 Laporan Rekonsiliasi Bank</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="import.html">Import</a>
+      <a href="workspace.html">Rekonsiliasi</a>
+      <a href="laporan.html" class="active">Laporan</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card toolbar">
+      <label>Rekening:</label>
+      <select id="sel-account"></select>
+      <button id="btn-print">🖨️ Cetak / Simpan PDF</button>
+    </div>
+
+    <div class="card" id="area-laporan">
+      <h2 id="judul">Laporan Rekonsiliasi Bank</h2>
+      <p id="periode"></p>
+
+      <table class="tbl-laporan">
+        <tr><th>Saldo menurut Buku Besar</th><td id="r-buku">Rp 0</td></tr>
+        <tr><th>Saldo menurut Rekening Koran</th><td id="r-bank">Rp 0</td></tr>
+        <tr class="total"><th>Selisih</th><td id="r-selisih">Rp 0</td></tr>
+      </table>
+
+      <h3>1. Transaksi Hanya di Perusahaan (Outstanding)</h3>
+      <table id="tbl-out"><thead><tr><th>Tgl</th><th>Ref</th><th>Ket</th><th>Nominal</th></tr></thead><tbody></tbody></table>
+
+      <h3>2. Transaksi Hanya di Bank (Belum Dibukukan)</h3>
+      <table id="tbl-belum"><thead><tr><th>Tgl</th><th>Ket</th><th>Mutasi</th><th>Nominal</th></tr></thead><tbody></tbody></table>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

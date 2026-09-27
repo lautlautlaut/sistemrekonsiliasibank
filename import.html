@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Import Mutasi Bank</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏦 Import Center</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="import.html" class="active">Import</a>
+      <a href="workspace.html">Rekonsiliasi</a>
+      <a href="laporan.html">Laporan</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Upload Mutasi Rekening Koran (CSV)</h2>
+
+      <label>Rekening Tujuan:</label>
+      <select id="sel-account"></select>
+
+      <label>File CSV:</label>
+      <input type="file" id="file-csv" accept=".csv" />
+
+      <p class="hint">
+        Format kolom: <code>tanggal,keterangan,jenis_mutasi,nominal</code><br>
+        Contoh: <code>2025-01-15,TRF CR PT ABC,CR,5000000</code>
+      </p>
+
+      <button id="btn-upload">Upload &amp; Import</button>
+      <div id="log" class="log"></div>
+    </div>
+
+    <div class="card">
+      <h2>Tambah Transaksi Internal Manual</h2>
+      <form id="form-internal">
+        <input type="date"   id="i-tanggal" required />
+        <input type="text"   id="i-ref"     placeholder="No Referensi" required />
+        <input type="text"   id="i-ket"     placeholder="Keterangan" required />
+        <select id="i-jenis" required>
+          <option value="Masuk">Masuk</option>
+          <option value="Keluar">Keluar</option>
+        </select>
+        <input type="number" id="i-nominal" placeholder="Nominal" required min="1" />
+        <button type="submit">Simpan</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

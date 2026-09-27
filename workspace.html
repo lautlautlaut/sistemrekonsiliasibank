@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ruang Rekonsiliasi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏦 Ruang Rekonsiliasi</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="import.html">Import</a>
+      <a href="workspace.html" class="active">Rekonsiliasi</a>
+      <a href="laporan.html">Laporan</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- TOOLBAR -->
+    <div class="card toolbar">
+      <label>Rekening:</label>
+      <select id="sel-account"></select>
+      <label>User:</label>
+      <select id="sel-user"></select>
+      <button id="btn-auto">⚡ Jalankan Auto-Match</button>
+      <button id="btn-refresh" class="secondary">🔄 Refresh</button>
+      <span id="status-match"></span>
+    </div>
+
+    <!-- 2 KOLOM -->
+    <div class="grid-2">
+      <div class="card">
+        <h3>📗 Buku Besar Kas (Internal)</h3>
+        <table id="tbl-internal">
+          <thead>
+            <tr><th>Pilih</th><th>Tgl</th><th>Ref</th><th>Ket</th><th>Jenis</th><th>Nominal</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>🏦 Rekening Koran Bank</h3>
+        <table id="tbl-bank">
+          <thead>
+            <tr><th>Pilih</th><th>Tgl</th><th>Ket</th><th>Mutasi</th><th>Nominal</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TOMBOL AKSI -->
+    <div class="card toolbar">
+      <button id="btn-manual" class="secondary">🔗 Pasangkan Manual</button>
+      <button id="btn-jurnal" class="warn">📝 Buat Jurnal Penyesuaian</button>
+    </div>
+
+    <!-- ★★★ RIWAYAT REKONSILIASI (INI YANG HILANG) ★★★ -->
+    <div class="card">
+      <div class="card-head">
+        <h3>📜 Riwayat Rekonsiliasi</h3>
+        <button id="btn-refresh-history" class="secondary small">🔄 Refresh</button>
+      </div>
+      <table id="tbl-history">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tanggal Match</th>
+            <th>Metode</th>
+            <th>Sisi Internal</th>
+            <th>Sisi Bank</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6" style="text-align:center;color:#94a3b8">Memuat riwayat...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MODAL JURNAL -->
+    <div id="modal-jurnal" class="modal hidden">
+      <div class="modal-box">
+        <h3>Jurnal Penyesuaian</h3>
+        <input type="text"   id="j-kode"  placeholder="Kode Akun (mis. 5105)" required />
+        <input type="text"   id="j-nama"  placeholder="Nama Akun (mis. Beban Adm Bank)" required />
+        <input type="number" id="j-nom"   placeholder="Nominal" required min="1" />
+        <select id="j-posisi">
+          <option value="Debit">Debit</option>
+          <option value="Kredit">Kredit</option>
+        </select>
+        <div class="modal-actions">
+          <button id="j-save">Simpan</button>
+          <button id="j-cancel" class="secondary">Batal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ★★★ MODAL UNDO (INI JUGA HILANG) ★★★ -->
+    <div id="modal-undo" class="modal hidden">
+      <div class="modal-box">
+        <h3>↩ Batalkan Rekonsiliasi?</h3>
+        <p style="font-size:.9rem;color:#475569;margin-bottom:10px">
+          Status kedua transaksi akan kembali ke <b>Unmatched</b>.
+          Jurnal penyesuaian terkait (jika ada) akan <b>dihapus</b>.
+        </p>
+        <label style="display:block;font-size:.82rem;color:#475569;margin-top:6px">
+          Alasan (opsional):
+        </label>
+        <input type="text" id="u-alasan" placeholder="mis. Salah pasangkan" />
+        <div class="modal-actions">
+          <button id="u-confirm" class="danger">Ya, Batalkan</button>
+          <button id="u-cancel" class="secondary">Batal</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
